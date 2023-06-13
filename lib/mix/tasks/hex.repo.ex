@@ -222,6 +222,10 @@ defmodule Mix.Tasks.Hex.Repo do
         if show_public_key(key) == fingerprint do
           key
         else
+          Hex.Shell.warn("""
+            Hex Calculates fingerprint: #{show_public_key(key)}
+            User provided fingerprint:  #{fingerprint}
+          """)
           Mix.raise("Public key fingerprint mismatch")
         end
 
