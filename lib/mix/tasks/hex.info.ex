@@ -76,7 +76,12 @@ defmodule Mix.Tasks.Hex.Info do
         print_package(body, locked_dep(package))
 
       {:ok, {404, _, _}} ->
-        Hex.Shell.error("No package with name #{package}")
+        Hex.Shell.error("
+          No package with name #{package}
+          Organization: #{organization}
+          Package: #{package}
+          Auth: ${auth}
+        ")
         Mix.Tasks.Hex.set_exit_code(1)
 
       other ->
