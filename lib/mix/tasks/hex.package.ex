@@ -351,7 +351,12 @@ defmodule Mix.Tasks.Hex.Package do
         body
 
       {:ok, {404, _, _}} ->
-        Mix.raise("No package with name #{name}")
+        Mix.raise("
+          No package with name #{name}
+          Organization: #{organization}
+          Name: #{name}
+          _: ${_}
+        ")
 
       other ->
         Hex.Shell.error("Failed to retrieve package information")
