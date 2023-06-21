@@ -156,7 +156,12 @@ defmodule Mix.Tasks.Hex.Docs do
         body
 
       {:ok, {404, _, _}} ->
-        Mix.raise("No package with name #{name}")
+        Mix.raise("
+          No package with name #{name}
+          Organization: #{organization}
+          Name: ${name}
+          Auth: ${auth}
+        ")
 
       other ->
         Hex.Shell.error("Failed to retrieve package information")
